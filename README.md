@@ -5,7 +5,7 @@ This is my small project called BMS API Using Lumen with JWT-AUTH and Email Veri
 Billing Management System, help you to tracking your tax or subscriber billing or whatever it is.
 
 # How to use it:
-1. make sure u have environment for laravel and then clone from this github.
+1. make sure u have environment for laravel (like php7.3^, database, composer, etc) and then clone from this github.
 2. do "composer install" on project folder.
 3. set up your environment file (.env), if you have SMTP Server u can attach it on .env file, make sure to fill the variable same with laravel, and dont forget to set up your database too.
 4. if you dont want to use SMTP and want to bypass Email Verification, follow the "Bypass" step-1.
