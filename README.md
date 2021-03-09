@@ -15,8 +15,10 @@ Billing Management System, help you to tracking your tax or subscriber billing o
 
 # IMPORTANT NOTE:
 IF YOU ARE TOO LAZY FOR DO BYPASS STEP, BUT STILL HATE SMTP/Email Verification, JUST IMPORT DATABASE FROM THIS ROOT PROJECT FOLDER CALLED "bms_lumen.sql" TO YOUR DATABASE AND SET UP THE ENV, THEN U CAN LOGIN USING CREDENTIALS:
-username: admin
-password: password
+
+- username: admin
+- password: password
+
 THX U.
 
 # Bypass Email Verification step
