@@ -13,6 +13,12 @@ Billing Management System, help you to tracking your tax or subscriber billing o
 6. if you use bypass method, in this step u need to follow the "Bypass" step-2.
 7. Enjoy.
 
+# IMPORTANT NOTE:
+IF YOU ARE TOO LAZY FOR DO BYPASS STEP, BUT STILL HATE SMTP/Email Verification, JUST IMPORT DATABASE FROM THIS ROOT PROJECT FOLDER CALLED "bms_lumen.sql" TO YOUR DATABASE AND SET UP THE ENV, THEN U CAN LOGIN USING CREDENTIALS:
+username: admin
+password: password
+THX U.
+
 # Bypass Email Verification step
 1. comment "use Authenticatable, Authorizable, HasFactory, Notifiable, MustVerifyEmail;" and uncomment "use Authenticatable, Authorizable, HasFactory;" on app/Models/User, then u need to comment the section "protected static function boot()" and that content on app/Models/User, after do that you will feel free for migrating your database without any problem like email verification failure.
 2. after migrating, dont forget to uncomment the "use Authenticatable, Authorizable, HasFactory, Notifiable, MustVerifyEmail;" then comment "use Authenticatable, Authorizable, HasFactory;" and uncomment the section "protected static function boot()" and that content (step 1 "Bypass" with the opposite work)
