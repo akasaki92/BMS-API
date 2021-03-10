@@ -1,24 +1,29 @@
-# Lumen PHP Framework
+# BMS API
+This is my small project called "BMS API", Using Lumen with JWT-AUTH and Email Verification
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+# What is BMS? 
+Billing Management System, help you to tracking your tax or subscriber billing or whatever it is.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+# How to use it:
+1. make sure u have environment for laravel (like php7.3^, database, composer, etc) and then clone from this github.
+2. do "composer install" on project folder.
+3. set up your environment file (.env), if you have SMTP Server u can attach it on .env file, make sure to fill the variable same with laravel, and dont forget to set up your database too.
+4. if you dont want to use SMTP and want to bypass Email Verification, follow the "Bypass" step-1.
+5. migrating, and u can also use dummy data while migrating (php artisan migrate:refresh --seed).
+6. if you use bypass method, in this step u need to follow the "Bypass" step-2.
+7. Enjoy, u can see the api URI on routes/web.php and the function on app/Http/Controllers/LanggananController.php
 
-## Official Documentation
+# IMPORTANT NOTE:
+IF YOU ARE TOO LAZY FOR DO BYPASS STEP, BUT STILL HATE SMTP/Email Verification, JUST IMPORT DATABASE FROM THIS ROOT PROJECT FOLDER CALLED "bms_lumen.sql" TO YOUR DATABASE AND SET UP THE ENV, THEN U CAN LOGIN USING CREDENTIALS:
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+- username: admin
+- password: password
 
-## Contributing
+THX U.
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Bypass Email Verification step
+1. comment "use Authenticatable, Authorizable, HasFactory, Notifiable, MustVerifyEmail;" and uncomment "use Authenticatable, Authorizable, HasFactory;" on app/Models/User, then u need to comment the section "protected static function boot()" and that content on app/Models/User, after do that you will feel free for migrating your database without any problem like email verification failure.
+2. after migrating, dont forget to uncomment the "use Authenticatable, Authorizable, HasFactory, Notifiable, MustVerifyEmail;" then comment "use Authenticatable, Authorizable, HasFactory;" and uncomment the section "protected static function boot()" and that content (step 1 "Bypass" with the opposite work)
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is still in delevopment, dont expect to much from this smool project, hehe.
