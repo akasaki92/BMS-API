@@ -12,7 +12,7 @@ Billing Management System, help you to tracking your tax or subscriber billing o
 5. migrating, and u can also use dummy data while migrating (php artisan migrate:refresh --seed).
 6. if you use bypass method, in this step u need to follow the "Bypass" step-2.
 7. do "php artisan jwt:secret"
-8. Enjoy, u can see the api URI on routes/web.php and the function on app/Http/Controllers/LanggananController.php
+8. Enjoy, u can see the api URI and details on https://documenter.getpostman.com/view/10774641/TzY3AuyB
 
 # IMPORTANT NOTE:
 IF YOU ARE TOO LAZY FOR DO BYPASS STEP, BUT STILL HATE SMTP/Email Verification, JUST IMPORT DATABASE FROM THIS ROOT PROJECT FOLDER CALLED "bms_lumen.sql" TO YOUR DATABASE AND SET UP THE ENV, THEN U CAN LOGIN USING CREDENTIALS:
