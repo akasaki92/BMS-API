@@ -17,22 +17,20 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['middleware' => ['auth','verified'], 'prefix' => 'v1'], function ($router) 
+$router->group(['prefix' => 'v1'], function ($router) 
 {
-    // $router->get('me', 'AuthController@me');
-    $router->get('/email-verification', ['as' => 'email.request.verification', 'uses' => 'AuthController@emailRequestVerification']);
-    $router->get('index', 'DashboardController@index');
-    $router->get('/langganan', 'LanggananController@index');
-    $router->post('/langganan', 'LanggananController@store');
-    $router->get('/langganan/{id}', 'LanggananController@show');
-    $router->put('/langganan/{id}', 'LanggananController@update');
-    $router->delete('/langganan/{id}', 'LanggananController@destroy');
-});
-
-$router->group(['prefix' => 'api'], function () use ($router) 
-{
-   $router->post('register', 'AuthController@register');
-   $router->post('login', 'AuthController@login');
-   $router->get('logout', 'AuthController@logout');
-   $router->get('verify', ['as' => 'email.verify', 'uses' => 'AuthController@emailVerify']);
+    $router->post('register', 'AuthController@register');
+    $router->post('login', 'AuthController@login');
+    $router->get('logout', 'AuthController@logout');
+    $router->get('verify', ['as' => 'email.verify', 'uses' => 'AuthController@emailVerify']);
+    $router->group(['middleware' => ['auth','verified']], function ($router) 
+    {
+        $router->get('/email-verification', ['as' => 'email.request.verification', 'uses' => 'AuthController@emailRequestVerification']);
+        $router->get('index', 'DashboardController@index');
+        $router->get('/langganan', 'LanggananController@index');
+        $router->post('/langganan', 'LanggananController@store');
+        $router->get('/langganan/{id}', 'LanggananController@show');
+        $router->put('/langganan/{id}', 'LanggananController@update');
+        $router->delete('/langganan/{id}', 'LanggananController@destroy');
+    });
 });
