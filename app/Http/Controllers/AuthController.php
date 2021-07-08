@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
+use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
@@ -91,17 +92,25 @@ class AuthController extends Controller
             'password' => 'required|string'
         ]);
 
+        $status = "error";
+        $message = "";
+        $data = null;
+        $code = 401;
+
         $credentials = $request->only(['username', 'password']);
         if (! $token = Auth::attempt($credentials)) {			
-            return response()->json([
-            'result' => 'failed',
-            'message' => 'Unauthorized'
-            ], 401);
+            $message = 'Login failed, wrong username or password';
+        }else{
+            $status = 'success';
+            $message = 'Login Success';
+            $data = ['api_token' => $token];
+            $code = 200;
         }
         return response()->json([
-            'result' => 'success',
-            'data' => $this->respondWithToken($token)
-        ], 200);
+            'status' => $status,
+            'message' => $message,
+            'data' => $data
+        ], $code);
     }
 
     public function logout()
@@ -110,8 +119,8 @@ class AuthController extends Controller
         return response()->json(['result' => 'success'], 200);
     }
 
-    // public function me()
-    // {
-    //     return response()->json(auth()->user());
-    // }
+    public function me()
+    {
+        return response()->json(auth()->user());
+    }
 }

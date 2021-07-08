@@ -25,6 +25,7 @@ $router->group(['prefix' => 'v1'], function ($router)
     $router->get('verify', ['as' => 'email.verify', 'uses' => 'AuthController@emailVerify']);
     $router->group(['middleware' => ['auth','verified']], function ($router) 
     {
+        $router->get('/profile', 'AuthController@me');
         $router->get('/email-verification', ['as' => 'email.request.verification', 'uses' => 'AuthController@emailRequestVerification']);
         $router->get('index', 'DashboardController@index');
         $router->get('/langganan', 'LanggananController@index');
